@@ -87,12 +87,12 @@ a{color:inherit;text-decoration:none}
 .duo p{color:var(--mute);font-size:18px;margin-bottom:18px}
 
 /* CTA final */
-.cta{position:relative;border-radius:var(--radius);overflow:hidden;min-height:460px;background:var(--deep);color:#fff;display:flex;align-items:center}
+.cta{position:relative;border-radius:var(--radius);overflow:hidden;min-height:460px;background:var(--teal);color:var(--deep);display:flex;align-items:center}
 .cta__tex{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
 .cta::before{content:none}
 .cta__person{position:absolute;right:30px;bottom:0;height:100%;width:auto;max-width:45%;object-fit:contain;object-position:bottom right;z-index:1}
 .cta__body{position:relative;z-index:2;padding:64px;max-width:620px}
-.cta__body .h1{color:#fff;font-size:64px;margin-bottom:20px}
+.cta__body .h1{color:var(--deep);font-size:64px;margin-bottom:20px}
 .cta__body p{font-size:20px;margin-bottom:28px;max-width:420px}
 .cta__note{font-size:14px;opacity:.85;margin-top:22px}
 
@@ -178,7 +178,7 @@ a{color:inherit;text-decoration:none}
   .duo{grid-template-columns:1fr;gap:24px}
   .cta{flex-direction:column;align-items:stretch;min-height:auto}
   .cta__tex{position:relative;height:300px;object-position:85% center}
-  .cta__body{padding:24px 24px 32px}
+  .cta__body{padding:24px 24px 32px;background:linear-gradient(180deg,#fff 0%,var(--mist) 100%)}
   .cta__body .h1{font-size:40px}
   .p-selos{grid-template-columns:1fr 1fr}
   .grid3,.grid2,.mech{grid-template-columns:1fr}
