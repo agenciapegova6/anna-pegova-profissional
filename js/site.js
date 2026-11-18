@@ -97,7 +97,11 @@
       tick = false;
       var r = sec.getBoundingClientRect(), total = sec.offsetHeight - window.innerHeight * 0.85;
       var p = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
+      var q = Math.min(1, Math.max(0, (p - 0.12) / 0.42));
+      q = q < .5 ? 2 * q * q : 1 - Math.pow(-2 * q + 2, 2) / 2;
       sec.style.setProperty('--p', p.toFixed(3));
+      sec.style.setProperty('--q', q.toFixed(3));
+      sec.style.setProperty('--edge', (q > 0.01 && q < 0.99) ? 1 : 0);
     }
     window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
     window.addEventListener('resize', run);
