@@ -1,19 +1,21 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>Painel · Inscritos Evento HOF</title>
-<link rel="stylesheet" href="../../../css/painel.css?v=1"></head>
+<link rel="stylesheet" href="../../../css/painel.css?v=2"></head>
 <body><div class="pn">
 <header class="pn-top"><span class="pn-logo"></span><div><p class="pn-eye">LP Captação HOF · Evento Anna Pegova</p><h1>Inscritos no evento</h1></div>
-<div class="pn-acts"><a class="pn-btn" id="planilha" target="_blank" rel="noopener" hidden>Abrir planilha</a><button class="pn-btn pn-btn--ghost" onclick="window.print()">Exportar PDF</button></div></header>
+<div class="pn-acts"><a class="pn-btn" id="planilha" target="_blank" rel="noopener" hidden>Abrir planilha</a><button class="pn-btn pn-btn--ghost" id="pdf" onclick="window.print()" hidden>Exportar PDF</button></div></header>
 <p class="pn-src" id="fonte">Carregando…</p>
-<section class="pn-kpis" id="kpis"></section>
+<form class="pn-lock" id="lock" hidden><h2>Painel restrito</h2><p>Digite a senha do painel para ver os inscritos.</p>
+<div><input id="senha" type="password" autocomplete="current-password" placeholder="Senha" required><button class="pn-btn" type="submit">Entrar</button></div><p class="pn-lock__err" id="lockErr" hidden>Senha incorreta.</p></form>
+<div id="dados" hidden><section class="pn-kpis" id="kpis"></section>
 <section class="pn-grid">
 <div class="pn-card"><h2>Ranking de estados</h2><p class="pn-sub">Top 10 · % sobre o total</p><div id="ranking"></div></div>
 <div class="pn-card"><h2>Onde estão os inscritos</h2><p class="pn-sub">Cada quadrado é um estado, na posição aproximada do mapa. Quanto mais escuro, mais inscritos.</p><div class="pn-map" id="mapa"></div></div>
 <div class="pn-card"><h2>Inscritos por dia</h2><p class="pn-sub">Últimos 30 dias</p><div class="pn-days" id="dias"></div></div>
 <div class="pn-card"><h2>Cidades de São Paulo</h2><p class="pn-sub">Inscritos do estado de SP por cidade</p><div id="cidades"></div></div>
 <div class="pn-card pn-wide"><h2>Últimas inscrições</h2><p class="pn-sub">Telefone mascarado. A lista completa está na planilha.</p><div id="recentes"></div></div>
-</section></div>
+</section></div></div>
 <script>window.EVENTO_ENDPOINT='https://script.google.com/macros/s/AKfycbxKiTT1-vGpkSAApbkhjz7iwf1m83CbSibiltSyixup2xV0YyTkSqNTL5_AG1VC2eRm/exec';</script>
-<script src="../../../js/painel.js?v=1" defer></script>
+<script src="../../../js/painel.js?v=2" defer></script>
 </body></html>
