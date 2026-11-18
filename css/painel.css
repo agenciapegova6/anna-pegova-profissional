@@ -1,0 +1,41 @@
+:root{--teal:#00B5AD;--deep:#0B5E5B;--paper:#FAF8F4;--mist:#E6F6F4;--line:#CBDCD8;--ink:#1F2A2A;--mute:#5B6666;--title:"ITC Avant Garde Gothic Pro","ITC Avant Garde Gothic","Questrial",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.pn{max-width:1320px;margin:0 auto;padding:32px 24px 64px}
+.pn-top{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.pn-logo{width:140px;aspect-ratio:360/105;background:var(--deep);-webkit-mask:url(../img/logo-anna-pegova.png) center/contain no-repeat;mask:url(../img/logo-anna-pegova.png) center/contain no-repeat}
+.pn-eye{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:500}
+.pn-top h1{font-family:var(--title);font-weight:600;font-size:34px;color:var(--deep);line-height:1.1}
+.pn-acts{margin-left:auto;display:flex;gap:10px}
+.pn-btn{display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:30px;background:var(--deep);color:#fff;font:500 14px/1 inherit;text-decoration:none;border:0;cursor:pointer}
+.pn-btn--ghost{background:#fff;color:var(--deep);border:1px solid var(--line)}
+.pn-src{font-size:13px;color:var(--mute);margin:18px 0 24px}
+.pn-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px}
+.pn-kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 24px}
+.pn-kpi p{font-size:13px;color:var(--mute)}
+.pn-kpi strong{display:block;font-family:var(--title);font-weight:600;font-size:36px;color:var(--deep);margin:6px 0 4px;line-height:1.1}
+.pn-kpi span{font-size:13px;color:var(--teal);font-weight:500}
+.pn-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pn-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.pn-wide{grid-column:1/-1}
+.pn-card h2{font-family:var(--title);font-weight:600;font-size:20px;color:var(--deep)}
+.pn-sub{font-size:13px;color:var(--mute);margin:2px 0 18px}
+.pn-row{display:grid;grid-template-columns:34px 140px 1fr 40px 40px;align-items:center;gap:10px;padding:7px 0;font-size:14px}
+.pn-row--c{grid-template-columns:170px 1fr 40px 40px}
+.pn-row b{color:var(--deep)}
+.pn-row i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--teal) var(--w),var(--mist) var(--w))}
+.pn-row em{font-style:normal;font-weight:700;text-align:right}
+.pn-row small{color:var(--mute);text-align:right}
+.pn-more{font-size:13px;color:var(--mute);margin-top:10px}
+.pn-empty{color:var(--mute);font-size:14px}
+.pn-map{display:grid;grid-template-columns:repeat(8,1fr);grid-auto-rows:46px;gap:6px;max-width:460px}
+.pn-tile{border-radius:8px;background:rgba(11,94,91,var(--a));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;line-height:1.15}
+.pn-tile.is-zero{background:#F1F4F3;color:#9AA6A5}
+.pn-tile b{font-size:12px}
+.pn-days{display:grid;grid-template-columns:repeat(30,1fr);gap:4px;height:160px;align-items:end}
+.pn-days div{height:100%;display:flex;align-items:flex-end}
+.pn-days i{display:block;width:100%;min-height:2px;border-radius:4px 4px 0 0;background:var(--teal)}
+.pn-rec{display:grid;grid-template-columns:1.4fr 1fr 1fr 110px;gap:12px;padding:12px 0;border-top:1px solid #EEF2F1;font-size:14px}
+.pn-rec small{color:var(--mute);text-align:right}
+@media (max-width:900px){.pn-kpis{grid-template-columns:1fr 1fr}.pn-grid{grid-template-columns:1fr}.pn-row{grid-template-columns:30px 1fr 80px 30px 36px}.pn-rec{grid-template-columns:1fr 1fr;}}
+@media print{.pn-acts{display:none}.pn-card,.pn-kpi{break-inside:avoid}}
