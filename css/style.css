@@ -338,3 +338,21 @@ main img{transition:opacity .8s ease}
 }
 @media (max-width:720px){.ih__cap{display:none}}
 @media (prefers-reduced-motion:reduce){.ih__media::before{display:none}.ih .ih__woman{clip-path:none!important}.ih{height:auto}.ih__stick{position:static}.ih .ih__clinic,.ih__cap,.ih .ih__media::after{display:none}.ih .ih__woman{opacity:1!important;transform:none!important}.ih .hero__body{opacity:1!important;transform:none!important}.ih .hero::after{opacity:1}}
+
+/* ===== Chamada final sensorial (texturas) ===== */
+.cta--sens{background:#F2F8F7;min-height:520px}
+.cta--sens::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(255,255,255,.6) 40%,rgba(255,255,255,0) 64%)}
+.cta--sens .cta__body{max-width:600px}
+.cta--sens .eyebrow{color:var(--deep);margin-bottom:18px}
+.cta--sens .cta__body .h1{font-size:54px;line-height:1.06;margin-bottom:18px}
+.cta--sens .cta__body p{color:var(--ink);font-size:18px;max-width:460px;margin-bottom:20px}
+.cta__chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.cta__chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:9px 16px;font-size:14px;color:var(--ink)}
+.cta__chip i{width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.cta__chip:first-child i{background:var(--gold)}
+@media (max-width:720px){
+  .cta--sens{min-height:auto}
+  .cta--sens::after{display:none}
+  .cta--sens .cta__tex{height:240px;object-position:80% center}
+  .cta--sens .cta__body .h1{font-size:34px}
+}
