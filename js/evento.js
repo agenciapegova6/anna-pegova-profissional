@@ -5,11 +5,20 @@
   var uf = f.elements.estado, cidadeBox = f.querySelector('.ev-cidade'), cidade = f.elements.cidade;
   var tel = f.elements.whatsapp, erro = f.querySelector('.ev-erro'), btn = f.querySelector('button[type=submit]');
 
+  var CAPITAIS = {AC:'Rio Branco',AL:'Maceió',AP:'Macapá',AM:'Manaus',BA:'Salvador',CE:'Fortaleza',DF:'Brasília',ES:'Vitória',GO:'Goiânia',MA:'São Luís',MT:'Cuiabá',MS:'Campo Grande',MG:'Belo Horizonte',PA:'Belém',PB:'João Pessoa',PR:'Curitiba',PE:'Recife',PI:'Teresina',RJ:'Rio de Janeiro',RN:'Natal',RS:'Porto Alegre',RO:'Porto Velho',RR:'Boa Vista',SC:'Florianópolis',SE:'Aracaju',TO:'Palmas'};
+  var opcoesSP = cidade.innerHTML;
   uf.addEventListener('change', function () {
-    var sp = uf.value === 'SP';
-    cidadeBox.hidden = !sp;
-    cidade.required = sp;
-    if (!sp) cidade.value = '';
+    var v = uf.value;
+    if (!v) { cidadeBox.hidden = true; cidade.required = false; cidade.value = ''; return; }
+    if (v === 'SP') {
+      cidade.innerHTML = opcoesSP; cidade.value = '';
+    } else {
+      cidade.innerHTML = '';
+      var o = document.createElement('option'); o.textContent = CAPITAIS[v]; o.value = CAPITAIS[v];
+      cidade.appendChild(o); cidade.value = CAPITAIS[v];
+    }
+    cidadeBox.hidden = false;
+    cidade.required = true;
   });
 
   tel.addEventListener('input', function () {
@@ -30,7 +39,7 @@
     var em = f.elements.email.value.trim();
     if (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return falha('Confira o e-mail informado.');
     if (!uf.value) return falha('Selecione seu estado.');
-    if (uf.value === 'SP' && !cidade.value) return falha('Selecione sua cidade.');
+    if (!cidade.value) return falha('Selecione sua cidade.');
     if (!f.elements.aceite.checked) return falha('Para receber o convite, marque o aceite de comunicações.');
     if (!window.EVENTO_ENDPOINT) return falha('Inscrições abrem em breve.');
 
