@@ -3,7 +3,7 @@
 body{background:var(--paper);color:var(--ink);font:15px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .pn{max-width:1320px;margin:0 auto;padding:32px 24px 64px}
 .pn-top{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.pn-logo{width:140px;aspect-ratio:360/105;background:var(--deep);-webkit-mask:url(../img/logo-anna-pegova.png) center/contain no-repeat;mask:url(../img/logo-anna-pegova.png) center/contain no-repeat}
+.pn-logo{width:140px;aspect-ratio:360/105;background:#333333;-webkit-mask:url(../img/logo-anna-pegova.png) center/contain no-repeat;mask:url(../img/logo-anna-pegova.png) center/contain no-repeat}
 .pn-eye{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:500}
 .pn-top h1{font-family:var(--title);font-weight:600;font-size:34px;color:var(--deep);line-height:1.1}
 .pn-acts{margin-left:auto;display:flex;gap:10px}
