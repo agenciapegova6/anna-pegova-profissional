@@ -87,7 +87,24 @@
     });
   }
 
-  function start() { imgFade(); intro(); reveal(); scrollFx(); }
+
+  /* ---------- Home: progresso de rolagem do topo (clínica -> modelo) ---------- */
+  function heroSeq() {
+    var sec = document.querySelector('.ih');
+    if (!sec || reduce) return;
+    var tick = false;
+    function run() {
+      tick = false;
+      var r = sec.getBoundingClientRect(), total = sec.offsetHeight - window.innerHeight * 0.85;
+      var p = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
+      sec.style.setProperty('--p', p.toFixed(3));
+    }
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
+    window.addEventListener('resize', run);
+    run();
+  }
+
+  function start() { imgFade(); intro(); reveal(); scrollFx(); heroSeq(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();
 })();
