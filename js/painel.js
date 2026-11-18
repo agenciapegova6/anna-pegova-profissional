@@ -6,20 +6,29 @@
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
   var pct = function (n, t) { return t ? Math.round(n * 100 / t) + '%' : '0%'; };
 
-  var chave = '';
-  try { chave = new URLSearchParams(location.hash.slice(1)).get('k') || sessionStorage.getItem('ap-painel-k') || ''; } catch (e) {}
-  if (!chave) chave = prompt('Senha do painel') || '';
-  try { sessionStorage.setItem('ap-painel-k', chave); } catch (e) {}
-
-  if (!window.EVENTO_ENDPOINT) { $('fonte').textContent = 'Painel ainda não conectado à planilha.'; return; }
-
-  fetch(window.EVENTO_ENDPOINT + '?k=' + encodeURIComponent(chave))
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      if (d.erro) { $('fonte').textContent = 'Senha incorreta. Abra o link do painel novamente.'; try { sessionStorage.removeItem('ap-painel-k'); } catch (e) {} return; }
-      desenha(d);
-    })
-    .catch(function () { $('fonte').textContent = 'Não foi possível carregar os dados agora.'; });
+  var lock = $('lock'), senha = $('senha');
+  function guarda(k) { try { k ? sessionStorage.setItem('ap-painel-k', k) : sessionStorage.removeItem('ap-painel-k'); } catch (e) {} }
+  function pedeSenha(errou) {
+    $('dados').hidden = true; $('planilha').hidden = true; $('pdf').hidden = true;
+    $('fonte').textContent = ''; lock.hidden = false; $('lockErr').hidden = !errou; senha.value = ''; senha.focus();
+  }
+  function carrega(k) {
+    if (!window.EVENTO_ENDPOINT) { $('fonte').textContent = 'Painel ainda não conectado à planilha.'; return; }
+    if (!k) return pedeSenha(false);
+    $('fonte').textContent = 'Carregando…';
+    fetch(window.EVENTO_ENDPOINT + '?k=' + encodeURIComponent(k))
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.erro) { guarda(''); return pedeSenha(true); }
+        guarda(k); lock.hidden = true; $('dados').hidden = false; $('pdf').hidden = false; desenha(d);
+      })
+      .catch(function () { $('fonte').textContent = 'Não foi possível carregar os dados agora.'; });
+  }
+  lock.addEventListener('submit', function (ev) { ev.preventDefault(); carrega(senha.value.trim()); });
+  var k0 = '';
+  try { k0 = new URLSearchParams(location.hash.slice(1)).get('k') || sessionStorage.getItem('ap-painel-k') || ''; } catch (e) {}
+  if (location.hash) history.replaceState(null, '', location.pathname);
+  carrega(k0);
 
   function desenha(d) {
     var T = d.total, est = Object.keys(d.porEstado).filter(function (k) { return NOMES[k]; })
