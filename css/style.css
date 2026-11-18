@@ -305,23 +305,24 @@ main img{transition:opacity .8s ease}
 @media (max-width:1100px){.ev-form,.ev-ok,.ev-hero__body{grid-column:1;grid-row:auto}}
 
 /* ===== Home: clínica -> modelo (parallax de rolagem) ===== */
-.ih{--p:0;position:relative;height:190vh}
+.ih{--p:0;--q:0;--edge:0;position:relative;height:200vh}
 .ih__stick{position:sticky;top:72px;padding-top:4px}
 .ih__card{min-height:min(620px,calc(100vh - 170px))}
 .ih__media{position:absolute;inset:0;overflow:hidden;z-index:0}
 .ih__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform,opacity}
-.ih .ih__clinic{object-position:center;opacity:calc(1 - var(--p) * 1.6);transform:scale(calc(1 + var(--p) * .18)) translateY(calc(var(--p) * -40px))}
-.js .ih .ih__woman,.is-ready .ih .ih__woman{opacity:clamp(0,calc((var(--p) - .2) * 2.2),1);transform:scale(calc(1.16 - var(--p) * .14));transition:none}
-.ih .hero::after{opacity:clamp(0,calc((var(--p) - .3) * 2.5),1);z-index:0}
-.ih__cap{position:absolute;left:56px;bottom:56px;z-index:1;color:#fff;opacity:clamp(0,calc(1 - var(--p) * 3),1);transform:translateY(calc(var(--p) * -60px));pointer-events:none}
+.ih .ih__clinic{object-position:center;transform:scale(calc(1.02 + var(--q) * .14)) translateX(calc(var(--q) * -6%));filter:brightness(calc(1 - var(--q) * .12))}
+.js .ih .ih__woman,.is-ready .ih .ih__woman{opacity:1;clip-path:inset(0 0 0 calc((1 - var(--q)) * 100%));transform:scale(calc(1.12 - var(--q) * .1));transition:none}
+.ih__media::before{content:"";position:absolute;top:0;bottom:0;left:calc((1 - var(--q)) * 100%);width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,#E8C98A 20%,#B08226 50%,#E8C98A 80%,transparent);z-index:2;opacity:calc(var(--edge) * 1);box-shadow:0 0 24px rgba(232,201,138,.6)}
+.ih .hero::after{opacity:clamp(0,calc((var(--p) - .45) * 3),1);z-index:1}
+.ih__cap{position:absolute;left:56px;bottom:56px;z-index:3;color:#fff;opacity:clamp(0,calc(1 - var(--p) * 3),1);transform:translateY(calc(var(--p) * -60px));pointer-events:none}
 .ih__cap .eyebrow{color:#fff;margin-bottom:14px;text-shadow:0 1px 12px rgba(0,0,0,.25)}
 .ih__capt{font-family:var(--title);font-weight:600;font-size:56px;line-height:1.05;text-shadow:0 2px 24px rgba(0,0,0,.25)}
 .ih__hint{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 .ih__hint::after{content:"";width:1px;height:34px;background:#fff;animation:ihHint 1.8s ease-in-out infinite;transform-origin:top}
 @keyframes ihHint{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
-.ih .ih__media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,40,38,.45),rgba(11,40,38,0) 55%);opacity:clamp(0,calc(1 - var(--p) * 2.5),1)}
+.ih .ih__media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,40,38,.45),rgba(11,40,38,0) 55%);opacity:clamp(0,calc(1 - var(--q) * 2),1);z-index:1}
 @media (min-width:721px){
-  .ih .hero__body{opacity:clamp(0,calc((var(--p) - .5) * 3.2),1);transform:translateY(calc((1 - clamp(0,calc((var(--p) - .5) * 3.2),1)) * 36px))}
+  .ih .hero__body{z-index:2;opacity:clamp(0,calc((var(--p) - .55) * 4),1);transform:translateY(calc((1 - clamp(0,calc((var(--p) - .55) * 4),1)) * 36px))}
   .ih .hero__body{pointer-events:auto}
 }
 @media (max-width:720px){
@@ -336,4 +337,4 @@ main img{transition:opacity .8s ease}
   .ih__capt{font-size:30px}
 }
 @media (max-width:720px){.ih__cap{display:none}}
-@media (prefers-reduced-motion:reduce){.ih{height:auto}.ih__stick{position:static}.ih .ih__clinic,.ih__cap,.ih .ih__media::after{display:none}.ih .ih__woman{opacity:1!important;transform:none!important}.ih .hero__body{opacity:1!important;transform:none!important}.ih .hero::after{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ih__media::before{display:none}.ih .ih__woman{clip-path:none!important}.ih{height:auto}.ih__stick{position:static}.ih .ih__clinic,.ih__cap,.ih .ih__media::after{display:none}.ih .ih__woman{opacity:1!important;transform:none!important}.ih .hero__body{opacity:1!important;transform:none!important}.ih .hero::after{opacity:1}}
